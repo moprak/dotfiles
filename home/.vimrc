@@ -34,11 +34,10 @@ set wildignore=*.o,*.obj,*~
 " Show trailing whitespace.
 set list
 set listchars=trail:.,tab:\ \
-
 " Key mapping
+set pastetoggle=<F8>
 noremap <F4> :set invhlsearch <CR>
 noremap <F9> :set invspell <CR>
-noremap <F8> :set invpaste <CR>
 map Y y$
 
 " Don't use Ex mode, use Q for formatting
@@ -47,6 +46,8 @@ map Q gq
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
 inoremap <C-U> <C-G>u<C-U>
+nmap ;tr :%s/\s\+$//
+vmap ;tr :s/\s\+$//
 
 syntax on
 
