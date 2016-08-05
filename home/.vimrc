@@ -52,22 +52,23 @@ syntax on
 
 " This is for managing plugins using vundle.
 filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-Bundle 'gmarik/vundle'
-Bundle 'vim-airline/vim-airline'
-Bundle 'vim-airline/vim-airline-themes'
-Bundle 'kien/ctrlp.vim'
-Bundle 'davidhalter/jedi-vim'
-Bundle 'vim-scripts/minibufexpl.vim'
-Bundle 'vim-scripts/taglist.vim'
-Bundle 'vim-scripts/netrw.vim'
-Bundle 'vim-scripts/omnicppcomplete'
-Bundle 'vim-scripts/xterm16.vim'
-Bundle 'vim-scripts/Align'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-commentary'
-" end of vundle stuff, run :BundleInstall to update
+set rtp+=~/.vim/bundle/Vundle.vim/
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'kien/ctrlp.vim'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'vim-scripts/minibufexpl.vim'
+Plugin 'vim-scripts/taglist.vim'
+Plugin 'vim-scripts/netrw.vim'
+Plugin 'vim-scripts/omnicppcomplete'
+Plugin 'vim-scripts/xterm16.vim'
+Plugin 'vim-scripts/Align'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-commentary'
+call vundle#end()
+" end of vundle stuff, run :PluginInstall to update
 
 " colorscheme
 let xterm16_colormap='soft'
