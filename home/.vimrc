@@ -68,6 +68,7 @@ Plugin 'vim-scripts/xterm16.vim'
 Plugin 'vim-scripts/Align'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-commentary'
+Plugin 'tmux-plugins/vim-tmux'
 call vundle#end()
 " end of vundle stuff, run :PluginInstall to update
 
