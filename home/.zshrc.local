@@ -10,17 +10,20 @@ bindkey -M menuselect 'l' vi-forward-char         # right
 bindkey -M menuselect 'j' vi-down-line-or-history # bottom
 
 #======================== Aliases =======================#
-# screen
-#alias s='screen'
 # tmux
 alias tmux='tmux -2'
 alias t='tmux -2 att'
 alias td='tmux det'
 # show largest files in cwd
-alias duh='du -sh * | sort -rh | head'
-# vim
-alias e='vim'
-alias v='vim'
+function duh() {
+    local dir
+    if [[ -n $1 ]]; then
+        dir=$1
+    else
+        dir=.
+    fi
+    du -sh $dir/* | sort -rh | head
+}
 # kde-open
 alias o='&>/dev/null kde-open5'
 # ssh
@@ -60,6 +63,12 @@ alias -g V='| vim -'
 
 ## Use a default width of 100 for manpages for more convenient reading
 export MANWIDTH=${MANWIDTH:-100}
+#=================== Local Libraries  ====================#
+PATH="$HOME/libs/bin:$PATH"
+PKG_CONFIG_PATH="$PKG_CONFIG_PATH:$HOME/libs/lib/pkgconfig"
+LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$HOME/libs/lib"
+INCLUDE="$INCLUDE:$HOME/libs/include"
+#=========================================================#
 
 ## to have more convenient account completion, specify your logins:
 # my_accounts=(
