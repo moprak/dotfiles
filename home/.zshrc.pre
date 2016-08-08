@@ -1,0 +1,1 @@
+fpath=($HOME/.dotsplat.git/completions $fpath)

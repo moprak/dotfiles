@@ -1,0 +1,71 @@
+#========================================================#
+## My local settings in conjunction with the grml zshrc ##
+#========================================================#
+## Start dotsplat
+source $HOME/.dotsplat.git/dotsplat.sh
+## use the vi navigation keys (hjkl) besides cursor keys in menu completion
+bindkey -M menuselect 'h' vi-backward-char        # left
+bindkey -M menuselect 'k' vi-up-line-or-history   # up
+bindkey -M menuselect 'l' vi-forward-char         # right
+bindkey -M menuselect 'j' vi-down-line-or-history # bottom
+
+#======================== Aliases =======================#
+# screen
+#alias s='screen'
+# tmux
+alias tmux='tmux -2'
+alias t='tmux -2 att'
+alias td='tmux det'
+# show largest files in cwd
+alias duh='du -sh * | sort -rh | head'
+# vim
+alias e='vim'
+alias v='vim'
+# kde-open
+alias o='&>/dev/null kde-open5'
+# ssh
+alias sa='eval $(ssh-agent);ssh-add -t 200h'
+alias sk='ssh-agent -k'
+alias cray='mosh cray'
+alias zappa='mosh zappa'
+# df
+alias df='df -h'
+
+#STEAM
+alias steam-wine='WINEDEBUG=-all wine ~/.wine/drive_c/Program\ Files\ \(x86\)/Steam/Steam.exe -no-cef-sandbox >/dev/null 2>&1 &'
+#=======================================================#
+
+#=================== Suffix Aliases ====================#
+alias -s tex=vim
+alias -s txt=vim
+alias -s html=firefox
+alias -s org=firefox
+alias -s com=firefox
+alias -s in=firefox
+#=======================================================#
+
+#=================== Global Aliases ====================#
+alias -g '...'='../..'
+alias -g '....'='../../..'
+#alias -g BG='& exit'
+alias -g C='|wc -l'
+alias -g G='|grep'
+alias -g H='|head'
+alias -g L='|less'
+#alias -g LL='|& less -r'
+alias -g S='| sort'
+alias -g T='|tail'
+alias -g V='| vim -'
+#=======================================================#
+
+## Use a default width of 100 for manpages for more convenient reading
+export MANWIDTH=${MANWIDTH:-100}
+
+## to have more convenient account completion, specify your logins:
+# my_accounts=(
+#     prakash@cray.ices.utexas.edu
+#     prak@lonestar.tacc.utexas.edu
+# )
+# zstyle ':completion:*:my-accounts' users-hosts $my_accounts
+#source /usr/share/dolfin/dolfin.conf
+
