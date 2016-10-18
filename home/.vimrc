@@ -10,6 +10,14 @@ set history=1000
 set undolevels=1000
 set showcmd
 set showmatch
+set scrolloff=1
+set sidescrolloff=5
+set ttimeout
+set ttimeoutlen=100
+set display+=lastline
+set tabpagemax=50
+set autoread
+set complete-=i
 
 " Searching
 set ignorecase smartcase
@@ -21,6 +29,9 @@ set ts=4
 set sts=4
 set expandtab smarttab
 set autoindent smartindent
+set formatoptions+=j
+set nrformats-=octal
+
 
 " Buffer switching is easier
 set confirm
@@ -34,6 +45,7 @@ set wildignore=*.o,*.obj,*~
 " Show trailing whitespace.
 set list
 set listchars=trail:.,tab:\ \
+" set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 " Key mapping
 set pastetoggle=<F8>
 noremap <F4> :set invhlsearch <CR>
@@ -69,6 +81,7 @@ Plugin 'vim-scripts/Align'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-commentary'
 Plugin 'tmux-plugins/vim-tmux'
+Plugin 'JuliaLang/julia-vim'
 call vundle#end()
 " end of vundle stuff, run :PluginInstall to update
 
