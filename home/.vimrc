@@ -82,6 +82,8 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-commentary'
 Plugin 'tmux-plugins/vim-tmux'
 Plugin 'JuliaLang/julia-vim'
+Plugin 'mileszs/ack.vim'
+Plugin 'dietsche/vim-lastplace'
 call vundle#end()
 " end of vundle stuff, run :PluginInstall to update
 
@@ -121,3 +123,8 @@ filetype plugin indent on
 " Latexsuite options
 set grepprg=grep\ -nH\ $*
 let g:tex_flavor = "latex"
+
+" Ack options
+if executable('ag')
+      let g:ackprg = 'ag --vimgrep'
+endif
