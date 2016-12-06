@@ -27,7 +27,7 @@ function duh() {
 # kde-open
 alias o='&>/dev/null kde-open5'
 # ssh
-alias sa='eval $(ssh-agent);ssh-add -t 200h'
+alias sa='eval $(ssh-agent);ssh-add -t 2000h'
 alias sk='ssh-agent -k'
 alias cray='mosh cray'
 alias zappa='mosh zappa'

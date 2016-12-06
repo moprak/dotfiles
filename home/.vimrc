@@ -84,6 +84,7 @@ Plugin 'tmux-plugins/vim-tmux'
 Plugin 'JuliaLang/julia-vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'dietsche/vim-lastplace'
+Plugin 'lervag/vimtex'
 call vundle#end()
 " end of vundle stuff, run :PluginInstall to update
 
@@ -121,8 +122,14 @@ nnoremap <C-g> :TlistToggle<CR>
 
 filetype plugin indent on
 " Latexsuite options
-set grepprg=grep\ -nH\ $*
+" set grepprg=grep\ -nH\ $*
+
+" vimtex options
 let g:tex_flavor = "latex"
+let g:vimtex_enabled=1
+let g:vimtex_view_general_viewer = 'okular'
+let g:vimtex_view_general_options = '--unique @pdf\#src:@line@tex'
+let g:vimtex_view_general_options_latexmk = '--unique'
 
 " Ack options
 if executable('ag')
