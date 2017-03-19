@@ -70,8 +70,8 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'kien/ctrlp.vim'
-Plugin 'davidhalter/jedi-vim'
+Plugin 'ctrlpvim/ctrlp.vim'
+" Plugin 'davidhalter/jedi-vim'
 Plugin 'vim-scripts/minibufexpl.vim'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'vim-scripts/netrw.vim'
@@ -128,8 +128,10 @@ filetype plugin indent on
 let g:tex_flavor = "latex"
 let g:vimtex_enabled=1
 let g:vimtex_view_general_viewer = 'okular'
-let g:vimtex_view_general_options = '--unique @pdf\#src:@line@tex'
-let g:vimtex_view_general_options_latexmk = '--unique'
+" let g:vimtex_view_general_options = '--unique @pdf\#src:@line@tex'
+" let g:vimtex_view_general_options = ' @pdf\#src:@line@tex'
+" let g:vimtex_view_general_options_latexmk = '--unique'
+let g:vimtex_quickfix_ignore_all_warnings=1
 
 " Ack options
 if executable('ag')

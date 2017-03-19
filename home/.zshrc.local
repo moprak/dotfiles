@@ -9,6 +9,12 @@ bindkey -M menuselect 'k' vi-up-line-or-history   # up
 bindkey -M menuselect 'l' vi-forward-char         # right
 bindkey -M menuselect 'j' vi-down-line-or-history # bottom
 
+autoload up-line-or-beginning-search
+autoload down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+[[ -n "${key[Up]}" ]] && bindkey "${key[Up]}" up-line-or-beginning-search
+[[ -n "${key[Down]}" ]] && bindkey "${key[Down]}" down-line-or-beginning-search
 #======================== Aliases =======================#
 # tmux
 alias tmux='tmux -2'
@@ -27,9 +33,8 @@ function duh() {
 # kde-open
 alias o='&>/dev/null kde-open5'
 # ssh
-alias sa='eval $(ssh-agent);ssh-add -t 2000h'
-alias sk='ssh-agent -k'
-alias cray='mosh cray'
+alias sa='ssh-add -t 2000h'
+alias serenity='mosh serenity'
 alias zappa='mosh zappa'
 # df
 alias df='df -h'
@@ -77,4 +82,11 @@ INCLUDE="$INCLUDE:$HOME/libs/include"
 # )
 # zstyle ':completion:*:my-accounts' users-hosts $my_accounts
 #source /usr/share/dolfin/dolfin.conf
+#===================== Running the ssh agent=================#
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+    ssh-agent > ~/.ssh-agent-thing
+fi
+if [[ "$SSH_AGENT_PID" == "" ]]; then
+    eval "$(<~/.ssh-agent-thing)"
+fi
 
