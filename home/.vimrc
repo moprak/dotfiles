@@ -45,7 +45,6 @@ set wildignore=*.o,*.obj,*~
 " Show trailing whitespace.
 set list
 set listchars=trail:.,tab:\ \
-" set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 " Key mapping
 set pastetoggle=<F8>
 noremap <F4> :set invhlsearch <CR>
@@ -78,15 +77,15 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'ctrlpvim/ctrlp.vim'
-" Plugin 'davidhalter/jedi-vim'
+Plugin 'davidhalter/jedi-vim'
 Plugin 'vim-scripts/minibufexpl.vim'
 Plugin 'vim-scripts/taglist.vim'
-Plugin 'vim-scripts/netrw.vim'
-Plugin 'vim-scripts/omnicppcomplete'
+" Plugin 'vim-scripts/omnicppcomplete'
 Plugin 'vim-scripts/xterm16.vim'
 Plugin 'vim-scripts/Align'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-abolish'
 Plugin 'tmux-plugins/vim-tmux'
 Plugin 'JuliaLang/julia-vim'
 Plugin 'mileszs/ack.vim'
@@ -97,7 +96,7 @@ call vundle#end()
 
 " colorscheme
 let xterm16_colormap='soft'
-let xterm16_brightness='low'
+let xterm16_brightness='med'
 colorscheme xterm16
 
 " statusline
@@ -106,16 +105,11 @@ set ttimeoutlen=50
 set laststatus=2
 set noshowmode
 let g:airline#extensions#whitespace#show_message = 0
-let g:airline_symbols={}
-let g:airline_left_sep = '▶'
-let g:airline_right_sep = '◀'
-let g:airline_symbols.whitespace = 'Ξ'
-let g:airline_symbols.linenr = '|'
-"let g:airline#extensions#tabline#enable = 1
-" use below if line/col is getting painful
-"let g:airline_section_b='[%P%:%4l:%c]'
-"let g:airline_section_z='%F'
-"set statusline=%F%m%r%h%w\ [%l,%v\ %p%%]\ [LEN=%L]\ [%Y]\ [%{&ff}]
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+let g:airline_symbols.maxlinenr = ''
+let g:airline_section_z='%3p%%:%4l:%2v'
 
 " miniBuf options
 let g:miniBufExplMapWindowNavVim = 1
@@ -128,8 +122,6 @@ let Tlist_Close_On_Select = 1
 nnoremap <C-g> :TlistToggle<CR>
 
 filetype plugin indent on
-" Latexsuite options
-" set grepprg=grep\ -nH\ $*
 
 " vimtex options
 let g:tex_flavor = "latex"
@@ -138,9 +130,23 @@ let g:vimtex_view_general_viewer = 'okular'
 " let g:vimtex_view_general_options = '--unique @pdf\#src:@line@tex'
 " let g:vimtex_view_general_options = ' @pdf\#src:@line@tex'
 " let g:vimtex_view_general_options_latexmk = '--unique'
-let g:vimtex_quickfix_ignore_all_warnings=1
+let g:vimtex_quickfix_open_on_warning=0
+if !exists('g:vimtex_toc_config')
+    let g:vimtex_toc_config = {}
+endif
+let g:vimtex_toc_config.split_width = 29
+let g:vimtex_toc_config.show_numbers = 0
+let g:vimtex_toc_config.show_help = 0
 
 " Ack options
 if executable('ag')
       let g:ackprg = 'ag --vimgrep'
 endif
+
+if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
+  runtime! macros/matchit.vim
+endif
+
+" jedi-vim options
+let g:jedi#popup_on_dot = 0
+let g:jedi#show_call_signatures = "2"
